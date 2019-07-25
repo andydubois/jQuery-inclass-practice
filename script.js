@@ -15,9 +15,36 @@ function handleReady() {
     $('.once-blue').addClass('blue');
     // $('.once-blue').removeClass('blue');
     // $('.once-blue').toggleClass('blue');
-    $(document.body).append(`<p>ONE RING TO RULE THEM ALL</p>`).prepend('your hat is pretty cool')
+    $(document.body).append(`<p>ONE RING TO RULE THEM ALL</p>`).prepend('your hat is pretty cool');
+  
+    //when i click the add food button, I want to see a console.log
+    $('#addFoodButton').on('click', handleClick)
+    //jQuery exists now.on('click' , existsInTheFuture, handleDelete)
+    $('#foodList ').on('click', '.foodItem', handleDelete);
+
+
  }
 
+ function handleClick() {
+     console.log('clicked');
+     //go get the value of our input
+     let newFood = $('#inputFood').val();
+     console.log(newFood);
+     $('#foodList').append(`<li class="foodItem">${newFood} <button class="foodItem" type="button">Delete Food</button></li>`);
+     //need to clear input field after entry
+     $('#inputFood').val('');
+ }
 
+function handleDelete() {
+    console.log('clicked delete');
+    //$(this) will get the item that called this function
+    $(this).parent().remove();
+    // $(this).html('');
+    // $(this).empty();
+
+}
 
 console.log('client.js is done loading');
+
+
+    //  $('#foodList').append(`<li>` + newFood + `</li>`);
